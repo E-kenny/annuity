@@ -7,6 +7,8 @@ function benefithandler() {
     const earningAge = document.querySelector('#earning-age');
     const premiumFrequency = document.querySelector('#premium-frequency');
     const output = document.querySelector('#output');
+    const semiAnnual = document.querySelector('#semi-annual');
+    const monthly = document.querySelector('#monthly');
     let benefit;
     let rateData;
     let rate;
@@ -78,7 +80,9 @@ function benefithandler() {
     }else{
         //benefit = (premium.value - 1000)/rate;
         benefit =(premium.value -1000)*1000/rate;
-        output.innerHTML='<span class="text-blue-800 text-size-sm">Your annual benefit will be:</span>  ' + benefit + ' naira';
+        output.innerHTML='<span class="text-blue-800 text-size-sm">Your annual benefit will be:</span>  ' + benefit + ' Naira';
+        semiAnnual.innerHTML = '<span class="text-blue-800 text-size-sm">Your semi-annual benefit will be:</span>  ' + benefit/2 + ' Naira';
+        monthly.innerHTML= '<span class="text-blue-800 text-size-sm">Your monthly benefit will be:</span>  ' + benefit/12 + ' Naira';
      }
     
     
@@ -97,6 +101,8 @@ function benefithandler() {
     const earningAge = document.querySelector('#earning-age');
     const premiumFrequency = document.querySelector('#premium-frequency');
     const output = document.querySelector('#output');
+    const semiAnnual = document.querySelector('#semi-annual');
+    const monthly = document.querySelector('#monthly');
     let premium;
     let rateData;
     let rate;
@@ -161,18 +167,24 @@ function benefithandler() {
         }
 
     }
-
-    if (isNaN(premium.value)){
+    
+    if (isNaN(benefit.value)){
         output.innerHTML='<span class="text-blue-800 text-size-sm">Please insert a valid benefit</span>';
-    }else{
 
+        alert("premium")
+
+     }else {
+       
         premium = benefit.value * rate/1000 + 1000;
-        output.innerHTML='<span class="text-blue-800 text-size-sm">Your annual premium will be:</span>  ' + premium + ' naira'
-     }
+        
+        output.innerHTML='<span class="text-blue-800 text-size-sm">Your annual premium will be:</span>  ' + premium + ' Naira'
+        
+        semiAnnual.innerHTML = '<span class="text-blue-800 text-size-sm">Your semi-annual benefit will be:</span>  ' + premium/2 + ' Naira';
+        
+        monthly.innerHTML= '<span class="text-blue-800 text-size-sm">Your monthly benefit will be:</span>  ' + premium/12 + ' Naira';
 
-
-
-
+        
+      }
 
     
   }
