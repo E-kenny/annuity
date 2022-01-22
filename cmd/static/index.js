@@ -75,14 +75,23 @@ function benefithandler() {
     }
 
 
-    if (isNaN(premium.value)){
+    if (isNaN(premium.value) || !premium.value){
         output.innerHTML='<span class="text-blue-800 text-size-sm">Please insert a valid premium</span>';
+        semiAnnual.innerHTML = ''
+        monthly.innerHTML= ''
+
     }else{
-        //benefit = (premium.value - 1000)/rate;
+
         benefit =(premium.value -1000)*1000/rate;
-        output.innerHTML='<span class="text-blue-800 text-size-sm">Your annual benefit will be:</span>  ' + benefit + ' Naira';
-        semiAnnual.innerHTML = '<span class="text-blue-800 text-size-sm">Your semi-annual benefit will be:</span>  ' + benefit/2 + ' Naira';
-        monthly.innerHTML= '<span class="text-blue-800 text-size-sm">Your monthly benefit will be:</span>  ' + benefit/12 + ' Naira';
+
+        let halfYear = benefit/2
+        let oneMonth = benefit/12
+
+
+        
+        output.innerHTML='<span class="text-blue-800 text-size-sm">Annual benefit will be:</span>  ' + benefit.toFixed(2) + ' <span class="text-blue-800 ">Naira</span>';
+        semiAnnual.innerHTML = '<span class="text-blue-800 text-size-sm">Semi-annual benefit will be:</span>  ' + halfYear.toFixed(2) + ' <span class="text-blue-800 ">Naira</span>';
+        monthly.innerHTML= '<span class="text-blue-800 text-size-sm">Monthly benefit will be:</span>  ' + oneMonth.toFixed(2) + ' <span class="text-blue-800 ">Naira</span>';
      }
     
     
@@ -168,20 +177,30 @@ function benefithandler() {
 
     }
     
-    if (isNaN(benefit.value)){
+    if (isNaN(benefit.value)|| !benefit.value){
         output.innerHTML='<span class="text-blue-800 text-size-sm">Please insert a valid benefit</span>';
-
-        alert("premium")
+        semiAnnual.innerHTML = ''
+        
+        monthly.innerHTML= ''
+        
 
      }else {
        
         premium = benefit.value * rate/1000 + 1000;
+
+        let halfYear = premium/2
+        let toFixedhalfyear = halfYear.toFixed(2)
+
+        let oneMonth = premium/12
+        let toFixedOneMonth = oneMonth.toFixed(2)
+
         
-        output.innerHTML='<span class="text-blue-800 text-size-sm">Your annual premium will be:</span>  ' + premium + ' Naira'
+        output.innerHTML='<span class="text-blue-800 text-size-sm">Annual premium will be:</span>  ' + premium.toFixed(2) + ' <span class="text-blue-800 ">Naira</span>';
         
-        semiAnnual.innerHTML = '<span class="text-blue-800 text-size-sm">Your semi-annual benefit will be:</span>  ' + premium/2 + ' Naira';
+        semiAnnual.innerHTML = '<span class="text-blue-800 ">Semi-annual benefit will be:</span>  ' +  toFixedhalfyear + ' <span class="text-blue-800 ">Naira</span>';;
         
-        monthly.innerHTML= '<span class="text-blue-800 text-size-sm">Your monthly benefit will be:</span>  ' + premium/12 + ' Naira';
+        monthly.innerHTML= '<span class="text-blue-800 ">Monthly benefit will be:</span>  ' + 
+        toFixedOneMonth + ' <span class="text-blue-800 ">Naira</span>';
 
         
       }
