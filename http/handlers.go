@@ -10,7 +10,7 @@ import (
 )
 
 func App() {
-	// load .env file
+	//load .env file
 	err := godotenv.Load(".env")
 	if err != nil {
 		fmt.Println(fmt.Errorf("error occur %s", err))
@@ -19,7 +19,8 @@ func App() {
 	http.HandleFunc("/premium", premium)
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static", fs))
-	http.ListenAndServe(  os.Getenv("PORT"), nil)
+	http.ListenAndServe( ":"+ os.Getenv("PORT"), nil)
+	//http.ListenAndServe(  ":3000", nil)
 	
 }
 
