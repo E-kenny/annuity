@@ -1,1 +1,1 @@
-web: annuity
+web: cmd
