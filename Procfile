@@ -1,1 +1,1 @@
-web: bin/annuity
+web: cmd/main
