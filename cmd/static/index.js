@@ -51,13 +51,17 @@ function benefithandler() {
     }else if(gender.value ==="female" && premiumFrequency.value === "annual"){
         if (guarantyPeriod.value==="5") {
             rateData={
-                21 : [113.6,72.95,47.20,30.95,21.23]
-            }
+                21 : [117.51, 76.64, 50.41, 33.66, 23.28], 22:[126.67, 82.33, 53.92, 35.73, 24.46], 23:[136.89, 88.64, 57.79, 38.02, 25.75], 24:[148.21, 95.61, 62.06, 40.55, 27.16], 25:[160.81, 103.32, 66.77, 43.35, 28.70], 26:[174.86, 111.88, 72.00, 46.45, 30.41], 27:[190.57, 121.39, 77.80, 49.88, 32.32], 28:[208.21, 131.99, 84.25, 53.70, 34.45], 29:[228.06, 143.82, 91.43, 57.94, 36.80], 30:[250.48, 157.05, 99.46, 62.68, 39.42], 31:[275.87, 171.87, 108.43, 67.98, 42.36], 32:[304.74, 188.50, 118.47, 73.90, 45.67], 33:[337.70, 207.19, 129.73, 80.54, 49.39], 34:[375.52, 228.23, 142.37, 87.99, 53.56], 35:[419.17, 251.96, 156.56, 96.36, 58.25], 36:[470.39, 278.78, 172.52, 105.77, 63.52], 37:[529.96, 309.16,  190.48, 116.36, 69.45], 38:[600.52, 343.68, 210.72, 128.29, 76.14], 39:[685.15, 383.04, 233.53, 141.74, 83.69], 40:[788.27, 428.54, 259.29, 156.92, 92.20], 41:[916.40, 480.55, 288.38, 174.04, 101.82], 42:[1079.52, 540.90, 321.29, 193.39, 112.69], 43:[1293.64, 611.63, 358.92, 215.26, 124.98], 44:[1588.57, 695.54, 401.28, 239.99, 138.89], 45:[2012.92, 796.73, 449.46, 268.25, 154.63], 46:[2674.70, 921.33, 504.45, 300.00, 172.63], 47:[3840.77, 1078.88, 567.49, 335.99, 192.88], 48:[6156.88, 1284.93, 640.28, 376.81, 215.84], 49:[null, 1568.37, 725.15, 423.15, 241.91], 50:[null, 1977.49, 825.55, 475.81, 271.52], 51:[null, 2618.41, 946.83, 535.72, 305.18], 52:[null, 3752.71, 1097.60, 604.02, 343.48], 53:[null, 6016.91, 1292.42, 682.09, 387.08], 54:[null, null, 1558.65, 771.73, 436.78], 55:[null, null, 1944.40, 875.47, 493.49], 56:[null, null, 2554.05, 997.24, 558.25], 57:[null, null, 3644.11, 1143.65, 632.32], 58:[null, null, 5843.82, 1326.78, 717.12], 59:[null, null, null, 1569.80, 814.40], 60:[null, null, null, 1921.87, 926.25], 61:[null, null, null, 2482.81, 1055.45], 62:[null, null, null, 3502.30, 1206.13], 63:[null, null, null, 5619.89, 1385.88], 64:[null, null, null, null, 1611.17], 65:[null, null, null, null, 1920.68], 66:[null, null, null, null, 2413.31], 67:[null, null, null, null, 3332.48], 68:[null, null, null, null, 5325.79]
+                }
+
             rate=rateData[age.value][earningAge.value]
             
         }else if(guarantyPeriod.value ==="10"){
-            rateData=""
-            rate=""
+            rateData={
+                21:[]
+            }
+            rate=rateData[age.value][earningAge.value]
+            
         }else{
             alert("An error just occurred")
         }
@@ -125,10 +129,18 @@ function benefithandler() {
     }
 
 
-    if (isNaN(premium.value) || !premium.value){
-        output.innerHTML='<span class="text-blue-800 text-size-sm">Please insert a valid premium</span>';
+    if (isNaN(premium.value) || !premium.value || !rate){
+
+        if (!rate) {
+            output.innerHTML='<span class="text-blue-800 text-size-sm">Please insert a valid age </span>';
         semiAnnual.innerHTML = ''
         monthly.innerHTML= ''
+        } else {
+            output.innerHTML='<span class="text-blue-800 text-size-sm">Please insert a valid premium</span>';
+        semiAnnual.innerHTML = ''
+        monthly.innerHTML= ''
+        }
+        
 
     }else{
 
@@ -275,11 +287,16 @@ function benefithandler() {
 
     }
 
-    if (isNaN(benefit.value)|| !benefit.value){
-        output.innerHTML='<span class="text-blue-800 text-size-sm">Please insert a valid benefit</span>';
+    if (isNaN(benefit.value)|| !benefit.value || !rate){
+        if (!rate) {
+            output.innerHTML='<span class="text-blue-800 text-size-sm">Please insert a valid age </span>';
         semiAnnual.innerHTML = ''
-        
         monthly.innerHTML= ''
+        } else {
+            output.innerHTML='<span class="text-blue-800 text-size-sm">Please insert a valid benefit</span>';
+        semiAnnual.innerHTML = ''
+        monthly.innerHTML= ''
+        }
         
 
      }else {
