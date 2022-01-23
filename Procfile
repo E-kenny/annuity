@@ -1,1 +1,2 @@
-web: cmd/main
+web: cmd
+
