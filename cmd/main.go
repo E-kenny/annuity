@@ -1,7 +1,7 @@
 package main
 
 import (
-	"aiico/http"
+	"github.com/E-kenny/annuity/http"
 	
 )
 
